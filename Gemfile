@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "4.2.8"
+gem "rails", "~> 5.1"
 
 platforms :ruby do
   gem "unicorn"
@@ -12,7 +12,7 @@ gem "mysql2", ">= 0.3.14"
 # gem "pg"
 
 gem "uglifier", ">= 1.3.0"
-gem "jquery-rails", "~> 3.1.3"
+gem "jquery-rails", "~> 4.3"
 gem "dynamic_form"
 
 gem "exception_notification"
@@ -37,7 +37,7 @@ gem "mail"
 gem "tzinfo-data"
 
 group :test, :development do
-  gem "rspec-rails", "~> 3.5", ">= 3.5.2"
+  gem "rspec-rails", "~> 3.6"
   gem "machinist"
   gem "sqlite3"
   gem "faker"
