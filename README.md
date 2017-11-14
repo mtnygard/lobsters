@@ -20,6 +20,11 @@ file.
 
 * Install Ruby 2.3.
 
+* Install a ton of other stuff
+
+         $ sudo apt install build-essential ruby-dev ruby-bundler libmysqlclient-dev libsqlite3-dev cmake nodejs
+         $ sudo gem install execjs
+
 * Checkout the lobsters git tree from Github
 
          $ git clone git://github.com/jcs/lobsters.git
