@@ -36,6 +36,9 @@ gem "oauth"
 # for parsing incoming mail
 gem "mail"
 
+# needed when running in Docker
+gem "tzinfo-data"
+
 group :test, :development do
   gem "rspec-rails", "~> 3.5", ">= 3.5.2"
   gem "machinist"

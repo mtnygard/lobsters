@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: ./bin/rails s -p 3000 -b '0.0.0.0'
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    expose:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: lobsters
+      MYSQL_USER: lobster
+      MYSQL_PASSWORD: l0bst3r
