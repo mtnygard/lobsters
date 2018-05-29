@@ -32,5 +32,5 @@ RUN gem update --system --no-rdoc --no-ri
 # App
 RUN mkdir -p /app
 WORKDIR /app
-ADD Gemfile /app/Gemfile
+ADD . /app
 RUN bundle install
