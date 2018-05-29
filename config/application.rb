@@ -42,9 +42,9 @@ module Lobsters
 end
 
 # disable yaml/xml/whatever input parsing
-silence_warnings do
-  ActionDispatch::ParamsParser::DEFAULT_PARSERS = {}
-end
+# silence_warnings do
+#   ActionDispatch::ParamsParser::DEFAULT_PARSERS = {}
+# end
 
 # define site name and domain to be used globally, should be overridden in a
 # local file such as config/initializers/production.rb

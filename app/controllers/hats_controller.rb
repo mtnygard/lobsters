@@ -1,3 +1,5 @@
+require 'hat_request_representer'
+
 class HatsController < ApplicationController
   before_action :require_logged_in_user, :except => [ :index ]
   before_action :require_logged_in_moderator,
@@ -20,20 +22,42 @@ class HatsController < ApplicationController
     end
   end
 
-  def create_request
-    @hat_request = HatRequest.new
-    @hat_request.user_id = @user.id
-    @hat_request.hat = params[:hat_request][:hat]
-    @hat_request.link = params[:hat_request][:link]
-    @hat_request.comment = params[:hat_request][:comment]
-
-    if @hat_request.save
-      flash[:success] = "Successfully submitted hat request."
-      return redirect_to "/hats"
-    end
-
-    render :action => "build_request"
+  def show
   end
+
+  def create_request
+    subject = url_for(controller: "users", action: "show", username: @user.username)
+    object = url_for(controller: "hats", action: "show", hat: params[:hat_request][:hat])
+    text_evidence = {:text => params[:hat_request][:comment]}
+    linked_evidence = {:link => params[:hat_request][:link]}
+
+    request = HatRequestNew.new(
+      :subject => subject,
+      :object => object,
+      :evidence => [text_evidence, linked_evidence])
+
+      logger.info "request is #{request.to_json}"
+    logger.info "Posting to #{Lobsters::Application.config.request_service_uri}"
+
+    request.post(uri: Lobsters::Application.config.request_service_uri, as: "application/json")
+
+    return redirect_to "/hats"
+  end
+
+  # def create_request
+  #   @hat_request = HatRequest.new
+  #   @hat_request.user_id = @user.id
+  #   @hat_request.hat = params[:hat_request][:hat]
+  #   @hat_request.link = params[:hat_request][:link]
+  #   @hat_request.comment = params[:hat_request][:comment]
+
+  #   if @hat_request.save
+  #     flash[:success] = "Successfully submitted hat request."
+  #     return redirect_to "/hats"
+  #   end
+
+  #   render :action => "build_request"
+  # end
 
   def requests_index
     @title = "Hat Requests"

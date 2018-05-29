@@ -34,4 +34,7 @@ Lobsters::Application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Location of our Request service
+  config.request_service_uri = "http://student-1-lb-request-service-1585889716.us-east-1.elb.amazonaws.com/requests"
 end

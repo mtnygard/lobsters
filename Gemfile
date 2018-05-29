@@ -37,6 +37,10 @@ gem "mail"
 # needed when running in Docker
 gem "tzinfo-data"
 
+# for REST resource access
+gem "roar"
+gem "multi_json"
+
 group :test, :development do
   gem "rspec-rails", "~> 3.6"
   gem "machinist"

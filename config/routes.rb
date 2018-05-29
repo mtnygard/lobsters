@@ -167,6 +167,8 @@ Lobsters::Application.routes.draw do
     post "/hats/reject_request/:id" => "hats#reject_request",
       :as => "reject_hat_request"
 
+    get "/hat" => "hats#show"
+
     get "/moderations" => "moderations#index"
     get "/moderations/page/:page" => "moderations#index"
     get "/moderators" => "users#tree", :moderators => true
