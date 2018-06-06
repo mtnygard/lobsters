@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "json"
-gem "rails", "5.1"
+gem "rails", "~> 5.1"
 gem "actionpack-xml_parser"
 
 platforms :ruby do

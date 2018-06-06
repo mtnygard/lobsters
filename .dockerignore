@@ -1,0 +1,9 @@
+.git
+lobsters/.git
+lobsters/.github
+lobsters/.travis
+lobsters/.gitignore
+lobsters/log/*
+lobsters/tmp/*
+Dockerfile
+docker-compose.yml

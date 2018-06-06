@@ -8,16 +8,12 @@ services:
       - db
   
   db:
-    image: mysql:8.0
+    image: mariadb
     restart: always
-    entrypoint: ['docker-entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
     expose:
       - "3306"
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: lobsters_dev
-      MYSQL_USER: lobster
-      MYSQL_PASSWORD: l0bst3r
     volumes:
       - data:/var/lib/mysql
 
