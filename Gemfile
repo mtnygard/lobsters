@@ -1,13 +1,14 @@
 source "https://rubygems.org"
 
 gem "json"
-gem "rails", "~> 5.1"
+gem "rails", "5.1"
+gem "actionpack-xml_parser"
 
 platforms :ruby do
   gem "unicorn"
 end
 
-gem "mysql2", ">= 0.3.14"
+gem 'mysql2', '>= 0.3.18', '< 0.5'
 
 # uncomment to use PostgreSQL
 # gem "pg"
@@ -36,6 +37,9 @@ gem "mail"
 
 # needed when running in Docker
 gem "tzinfo-data"
+
+gem "roar"
+gem "multi_json"
 
 group :test, :development do
   gem "rspec-rails", "~> 3.6"

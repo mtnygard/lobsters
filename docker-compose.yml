@@ -1,21 +1,25 @@
 version: '3'
 services:
   web:
-    build:
-      context: .
+    image: registry.gitlab.com/mtnygard/lobsters:latest
     ports:
       - "3000:3000"
     depends_on:
       - db
-    command: ["bin/rails", "server", "--binding", "0.0.0.0"]
   
   db:
     image: mysql:8.0
+    restart: always
     entrypoint: ['docker-entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
     expose:
       - "3306"
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: lobsters
+      MYSQL_DATABASE: lobsters_dev
       MYSQL_USER: lobster
       MYSQL_PASSWORD: l0bst3r
+    volumes:
+      - data:/var/lib/mysql
+
+volumes:
+  data:
