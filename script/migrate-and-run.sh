@@ -1,6 +1,7 @@
 #! /bin/bash
-export RAILS_ENV=development
+echo "Waiting for DB to be available"
+sleep 10
 cd /app
-bundle install
-rake db:setup
+rake db:create db:setup
+export RAILS_ENV=development
 bin/rails server --binding 0.0.0.0
